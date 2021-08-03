@@ -3,6 +3,8 @@ package com.deloitte.product.productService.controllers;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,10 +29,13 @@ public class ProductController {
 	@Autowired
 	private CouponClient couponClient;
 	
+	Logger logger = LoggerFactory.getLogger(ProductController.class);
+	
 	@PostMapping("/products")
 	@Retry(name="product-api", fallbackMethod = "handleError")
 	public Product createProduct(@RequestBody Product product) {
 		Coupon coupon = couponClient.getCoupon(product.getCouponCode());
+		logger.info("Coupon fetched: " + coupon.toString());
 		product.setPrice(product.getPrice().subtract(product.getPrice().multiply(coupon.getDiscount()).divide(new BigDecimal(100))));
 		return productRepo.save(product);
 	}
@@ -41,7 +46,7 @@ public class ProductController {
 	}
 	
 	public Product handleError(Product product, Exception exception) {
-		System.out.println("Inside handle error");
+		System.out.println("Inside handle error" + exception.getMessage());
 		return product;
 	}
 	
