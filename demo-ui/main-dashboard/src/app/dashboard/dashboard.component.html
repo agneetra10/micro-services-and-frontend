@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+    <span>App</span>
+    <div class="spacer"></div>
+    <a mat-button>Hi, {{username}}</a>
+    <a mat-button (click)="doLogout()">Logout</a>
+</mat-toolbar>
+<div style="text-align: center">
+    <div class="center">
+        <button mat-raised-button color="primary" class="btn" id="right-btn" (click)="navigateToApp('product')">Product</button>
+        <button mat-raised-button color="primary" class="btn"  (click)="navigateToApp('coupon')">Coupon</button>
+    </div>
+</div>

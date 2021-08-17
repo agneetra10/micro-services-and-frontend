@@ -1,0 +1,28 @@
+<div>
+    <div class="center">
+        <h1>Product Details</h1>
+        <form>
+            <mat-form-field style="width: 100%">
+                <mat-label>Product Name</mat-label>
+                <input matInput name="name" [(ngModel)]="name">
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+                <mat-label>Product Description</mat-label>
+                <input matInput name="description" [(ngModel)]="description">
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" name="price" [(ngModel)]="price">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Coupon Code</mat-label>
+                <mat-select name="couponCode" [(ngModel)]="couponCode">
+                  <mat-option *ngFor="let coupon of coupons" value="{{coupon.code}}">{{coupon.code}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="accent" (click)="onSubmit()">Add Product</button>
+            </div>
+          </form>
+    </div>
+</div>

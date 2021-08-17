@@ -1,0 +1,25 @@
+<div>
+    <div class="center">
+        <h1>Coupon Details</h1>
+        <form>
+            <mat-form-field style="width: 100%">
+                <mat-label>Coupon Code</mat-label>
+                <input matInput name="code" [(ngModel)]="code">
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+                <mat-label>Discount</mat-label>
+                <input matInput name="discount" [(ngModel)]="discount">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Choose Expiry date</mat-label>
+                <input matInput [matDatepicker]="picker" name="expiryDate" [(ngModel)]="expiryDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            <div>
+                <button *ngIf="id === 0" mat-raised-button color="accent" (click)="onSubmit()">Add Coupon</button>
+                <button *ngIf="id !== 0" mat-raised-button color="accent" (click)="onSubmit()">Update Coupon</button>
+            </div>
+          </form>
+    </div>
+</div>

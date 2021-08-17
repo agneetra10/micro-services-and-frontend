@@ -1,0 +1,22 @@
+.example-card {
+    max-width: 180px;
+    margin: 20px 20px;
+
+  }
+  
+.container {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    margin: 2% 5% 5% 5%;
+}
+
+.content-placer {
+  margin-left: 10px;
+  line-height: 2;
+}
+
+.header {
+  margin: 20px 0 0 20px;
+  font-weight: bold;
+}
